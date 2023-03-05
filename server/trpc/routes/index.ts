@@ -1,18 +1,8 @@
-import { z } from "zod";
-import { publicProcedure, router } from "../trpc";
+import { router } from "../trpc";
+import { todosRoute } from "./todos";
 
 export const appRouter = router({
-  hello: publicProcedure
-    .input(
-      z.object({
-        text: z.string().nullish(),
-      })
-    )
-    .query(({ input }) => {
-      return {
-        greeting: `hello ${input?.text ?? "world"}`,
-      };
-    }),
+  Todos: todosRoute,
 });
 
 export type AppRouter = typeof appRouter;
