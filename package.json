@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "nuxt": "3.0.0"
+  },
+  "dependencies": {
+    "@trpc/client": "^10.14.0",
+    "@trpc/server": "^10.14.0",
+    "trpc-nuxt": "^0.7.0",
+    "zod": "^3.21.0"
+  }
+}
