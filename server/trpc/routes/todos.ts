@@ -7,16 +7,17 @@ export const todosRoute = router({
     .input(
       z.object({
         todo: z.string(),
-        deadline: z.date(),
+        deadline: z.string(),
         status: z.string(),
       })
     )
-    .query(async ({ input }) => {
+    .mutation(async ({ input }) => {
       const todo = await prisma.todos.create({
-        data: input,
+        data: { ...input, deadline: new Date(input.deadline) },
       });
       return {
         todo,
       };
     }),
+  findAll: publicProcedure.query(async () => await prisma.todos.findMany({})),
 });
