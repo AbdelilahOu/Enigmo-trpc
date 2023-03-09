@@ -10,9 +10,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Client {
-  id   Int    @id @default(autoincrement())
-  name String @unique
+model Todos {
+  id       Int      @id @default(autoincrement())
+  todo     String   @unique
+  deadline DateTime
+  status   String
 
-  @@map("clients")
+  @@map("todos")
 }

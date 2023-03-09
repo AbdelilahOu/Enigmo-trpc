@@ -1,8 +1,8 @@
 <script setup lang="ts">
-// const { $client } = useNuxtApp();
-// $client.Todos.hello.useQuery({ text: "Hi" });
+const { $client: trpc } = useNuxtApp();
+const { data, refresh } = await trpc.Todos.hello.useQuery({ text: "Hi" });
 </script>
 
 <template>
-  <div>{{}}</div>
+  <div>{{ data }}</div>
 </template>

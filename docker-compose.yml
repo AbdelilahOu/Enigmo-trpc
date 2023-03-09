@@ -21,4 +21,4 @@ services:
 
 volumes:
   postgres:
-    name: nest-api-db.postgres.database
+    name: trpc-nuxt

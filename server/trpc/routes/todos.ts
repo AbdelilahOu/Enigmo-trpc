@@ -1,16 +1,22 @@
 import { z } from "zod";
+import { prisma } from "~~/server/db/prisma";
 import { publicProcedure, router } from "../trpc";
 
 export const todosRoute = router({
-  hello: publicProcedure
+  create: publicProcedure
     .input(
       z.object({
-        text: z.string().nullish(),
+        todo: z.string(),
+        deadline: z.date(),
+        status: z.string(),
       })
     )
-    .query(({ input }) => {
+    .query(async ({ input }) => {
+      const todo = await prisma.todos.create({
+        data: input,
+      });
       return {
-        greeting: `hello ${input?.text ?? "world"}`,
+        todo,
       };
     }),
 });
