@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const { $client: trpc } = useNuxtApp();
-const { data, error } = await trpc.Todos.findAll.useQuery();
+import useTodos from "./composables/useTodos";
+const { queryTodos, deleteTodo, updateTodo, createTodo } = useTodos();
 </script>
 
 <template>
-  <div>{{ data || error }}</div>
+  <div>{{}}</div>
 </template>
