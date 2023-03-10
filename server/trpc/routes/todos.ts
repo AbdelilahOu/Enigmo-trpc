@@ -21,4 +21,19 @@ export const todosRoute = router({
   findAll: publicProcedure.query(
     async ({ ctx }) => await ctx.prisma.todos.findMany({})
   ),
+  update: publicProcedure.mutation(({ ctx }) => {
+    return ctx.prisma.todos.update({
+      where: {
+        id: 1,
+      },
+      data: {},
+    });
+  }),
+  delete: publicProcedure.mutation(({ ctx }) => {
+    return ctx.prisma.todos.delete({
+      where: {
+        id: 1,
+      },
+    });
+  }),
 });
