@@ -10,7 +10,7 @@ const { data, refresh, pending } = await queryTodos();
       <UiInput @on-input="" />
 
       <div class="w-full h-full flex flex-col">
-        <Todo v-for="todo in data" />
+        <Todo v-for="todo in data" :key="todo.id" />
       </div>
     </div>
   </div>
