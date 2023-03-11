@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import useTodos from "../composables/useTodos";
 const { queryTodos, deleteTodo, updateTodo, createTodo } = useTodos();
-
 const { data, refresh, pending } = await queryTodos();
 </script>
 
