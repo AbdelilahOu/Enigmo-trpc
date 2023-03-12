@@ -1,9 +1,6 @@
-import { z } from "zod";
-import {
-  createTodoSchema,
-  updateTodoSchema,
-} from "~~/server/db/schema/todo.schema";
+import { createTodoSchema, updateTodoSchema } from "~~/server/db";
 import { publicProcedure, router } from "../trpc";
+import { z } from "zod";
 
 export const todosRoute = router({
   findAll: publicProcedure.query(
