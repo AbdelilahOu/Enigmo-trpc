@@ -1,4 +1,8 @@
 import { z } from "zod";
+import {
+  createTodoSchema,
+  updateTodoSchema,
+} from "~~/server/db/schema/todo.schema";
 import { publicProcedure, router } from "../trpc";
 
 export const todosRoute = router({
@@ -6,13 +10,8 @@ export const todosRoute = router({
     async ({ ctx }) => await ctx.prisma.todos.findMany({})
   ),
   create: publicProcedure
-    .input(
-      z.object({
-        todo: z.string(),
-        deadline: z.string(),
-        status: z.string(),
-      })
-    )
+    .input(createTodoSchema)
+    // .output()
     .mutation(async ({ input, ctx }) => {
       const todo = await ctx.prisma.todos.create({
         data: { ...input, deadline: new Date(input.deadline) },
@@ -21,26 +20,15 @@ export const todosRoute = router({
         todo,
       };
     }),
-  update: publicProcedure
-    .input(
-      z.object({
-        id: z.number(),
-        todo: z.object({
-          todo: z.string().optional(),
-          deadline: z.string().optional(),
-          status: z.string().optional(),
-        }),
-      })
-    )
-    .mutation(({ input, ctx }) => {
-      const { id, todo } = input;
-      return ctx.prisma.todos.update({
-        where: {
-          id,
-        },
-        data: todo,
-      });
-    }),
+  update: publicProcedure.input(updateTodoSchema).mutation(({ input, ctx }) => {
+    const { id, todo } = input;
+    return ctx.prisma.todos.update({
+      where: {
+        id,
+      },
+      data: todo,
+    });
+  }),
   delete: publicProcedure.input(z.number()).mutation(({ input: id, ctx }) => {
     return ctx.prisma.todos.delete({
       where: {
