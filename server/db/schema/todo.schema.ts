@@ -16,4 +16,4 @@ export const updateTodoSchema = z.object({
 });
 
 export type updateTodoInput = z.TypeOf<typeof updateTodoSchema>;
-export type createUserInput = z.TypeOf<typeof createTodoSchema>;
+export type createTodoInput = z.TypeOf<typeof createTodoSchema>;

@@ -1,4 +1,4 @@
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { createTodoSchema, updateTodoSchema } from "~~/server/db";
 import { publicProcedure, router } from "../trpc";
 import * as trpc from "@trpc/server";
@@ -12,6 +12,7 @@ export const todosRoute = router({
     .input(createTodoSchema)
     // .output()
     .mutation(async ({ input, ctx: { prisma } }) => {
+      console.log(input);
       try {
         const todo = await prisma.todos.create({
           data: { ...input, deadline: new Date(input.deadline) },
