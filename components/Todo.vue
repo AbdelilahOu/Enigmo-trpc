@@ -9,10 +9,12 @@ defineProps({
     }>,
   },
 });
+defineEmits(["delete:todo"]);
 </script>
 
 <template>
-  <div>
+  <div class="flex">
     {{ todo }}
+    <button @click="$emit('delete:todo', todo?.id)" class="">delete</button>
   </div>
 </template>
