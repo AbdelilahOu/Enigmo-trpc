@@ -2,7 +2,7 @@
 import { createTodoInput } from "~~/server/db";
 import useTodos from "../composables/useTodos";
 const { queryTodos, deleteTodo, updateTodo, createTodo } = useTodos();
-const { data, refresh } = await queryTodos();
+const { data, refresh, pending } = await queryTodos();
 
 const newTodo = reactive<createTodoInput>({
   todo: "",
