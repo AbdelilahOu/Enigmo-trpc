@@ -1,6 +1,5 @@
-const { $client: trpc } = useNuxtApp();
-
 export default () => {
+  const { $client: trpc } = useNuxtApp();
   const createTodo = (todo: newTodo) => trpc.Todos.create.mutate(todo);
   const deleteTodo = (id: number) => trpc.Todos.delete.mutate(id);
   const updateTodo = (id: number, todo: updateTodo) => {

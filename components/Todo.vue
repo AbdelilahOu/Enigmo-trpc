@@ -1,3 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps({
+  todo: {
+    type: Object as PropType<{
+      id: number;
+      todo: string;
+      deadline: string;
+      status: string;
+    }>,
+  },
+});
+</script>
 
-<template></template>
+<template>
+  <div>
+    {{ todo }}
+  </div>
+</template>
