@@ -8,7 +8,20 @@ export default defineNuxtConfig({
     cssPath: "~/assets/tailwind.css",
     configPath: "tailwind.config",
     exposeConfig: true,
-    // config: {},
+    config: {
+      content: [
+        "components/**/*.{vue,js,ts}",
+        "pages/**/*.vue",
+        "app.{js,ts,vue}",
+      ],
+      theme: {
+        extend: {
+          colors: {
+            primary: "",
+          },
+        },
+      },
+    },
     injectPosition: 0,
     viewer: false,
   },
