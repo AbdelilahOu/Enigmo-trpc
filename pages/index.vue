@@ -12,12 +12,12 @@ const newTodo = reactive<createTodoInput>({
 
 const createT = async () => {
   await createTodo(newTodo);
-  refresh();
+  await refresh();
 };
 
 const deleteT = async (id: number) => {
   await deleteTodo(id);
-  refresh();
+  await refresh();
 };
 </script>
 
