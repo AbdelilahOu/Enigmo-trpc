@@ -26,8 +26,10 @@ export const todosRoute = router({
             throw new trpc.TRPCError({
               code: "CONFLICT",
               message: "todo already exists",
+              cause: "inserting an existing todo",
             });
           }
+          return;
         }
         throw new trpc.TRPCError({
           code: "INTERNAL_SERVER_ERROR",
