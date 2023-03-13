@@ -23,9 +23,9 @@ const deleteT = async (id: number) => {
 
 <template>
   <div class="w-full h-full flex items-center justify-center">
-    <div class="w-full h-full relative px-1 py-1 md:w-3/5 md:h-5/6 lg:w-1/3">
+    <div class="w-full h-full relative m-2 md:w-3/5 md:h-5/6 lg:w-1/3">
       <div
-        class="grid grid-cols-2 absolute top-4 w-full gap-x-1 grid-rows-[40px_40px_40px]"
+        class="grid grid-cols-2 absolute left-0 top-4 w-full gap-x-1 grid-rows-[40px_40px_40px]"
       >
         <div class="col-span-2">
           <UiInput
